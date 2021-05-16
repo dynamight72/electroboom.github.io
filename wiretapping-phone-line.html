@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    
+        <link rel="stylesheet" href="css/icon-font.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        
+        <title>ElectroBoom | Where Electricity Hurts</title>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="JqueryLoadornot.js"></script>
+        <script>
+           function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
+var mySound;
+
+function playSound() {
+  mySound = new sound("img/fbr-1.mp3");
+  mySound.play();
+}
+        </script>
+    </head>
+    <div class="navigation">
+                <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+    
+                <label for="navi-toggle" class="navigation__button">
+                    <span class="navigation__icon">&nbsp;</span>
+                </label>
+    
+                <div class="navigation__background">&nbsp;</div>
+    
+                <nav class="navigation__nav">
+                    <ul class="navigation__list">
+                        <li class="navigation__item"><a href="file:///G:/ElectroBoom/index.html#header" class="navigation__link"><span>01</span>Home</a></li>
+                        <li class="navigation__item"><a href="file:///G:/ElectroBoom/index.html#section-articles" class="navigation__link"><span>02</span>Articles</a></li>
+                        <li class="navigation__item"><a href="file:///G:/ElectroBoom/index.html#section-sponsors" class="navigation__link"><span>03</span>Sponsors</a></li>
+                        <li class="navigation__item"><a href="#section-about" class="navigation__link"><span>04</span>About</a></li>
+                        </ul>
+                </nav>
+    </div>
+    <body style="background-color: #f7f7f7;" >
+        
+        <div class="u-center-text u-margin-bottom-big">
+            <h2 class="heading-secondory">
+                Wiretapping A Phone Line
+            </h2>
+        </div>
+        <a href="https://www.youtube.com/watch?v=bF4lPw5p63E" class="btn-text" style="float: right;">Watch My Video Here &rarr;</a>
+        <div class="row">
+            <div class="col-1-of-2" style="font-size: 1.5rem;">
+            <p>Let’s quickly go over how a land line works:</p>
+            <ul>
+            <li>There is a 48V DC with around 2kV series resistance on the phone lines that are called Tip and Ring</li>
+            <li>When ringing, an AC voltage of around 65Vrms 20Hz is sent over your phone line. Typically the ringing cycle is On for 2 second and Off for 5 seconds.</li>
+            <li>When your phone detects the ringing voltage it starts ringing and when you pick it up, or when you pick up the phone to make a call, your phone places a load of around 390 Ohm on the phone line. This load pulls the line voltage down by drawing current. The switching center detects this drop and knows your phone is off hook. If you were ringed, then the center establishes communication. But if you picked the phone to call, the center sends you the dial tone.</li>
+            <li>When you are ringed, after the first ringing signal the center transmits caller ID data digitally to your phone which the phone usually displays on a LCD screen.</li>
+            <li>The audio signal is an uncoded plain AC signal.</li>
+            <li>When you dial, you either use:
+            <ul>
+            <li>Pulse dialing (old style in rotary phones) which is basically quickly shorting and opening the tip and ring wires equal to the number you want to dial (10 shorts for 0), with a longer pause between the numbers.</li>
+            <li>Tone dialing which is basically two audio sine waves super imposed, and indicate a single number depending on the frequency of tones. Switching centers accept both methods above.</li>
+            </ul>
+            </li>
+            <li>When you turn off the call, the line voltage jumps back up to 48V which indicates to the center that the call is finished.</li>
+            <li>When you talk or being talked to, both audio signals are superimposed on the same line. There are filters in your phone to subtract your voice from the two signals so you can hear the incoming voice easily. Although a perfect subtraction is not needed as you are already hearing your voice through air.</li>
+            <li>The audio frequency is filtered below 4kHz.</li>
+            </ul>
+            <p>So basically listening to a call is quite simple. Like I said in the video, during an active call you don’t need to care for much. The line voltage is low (around 7V) and all you need is to isolate the DC using a capacitor and send the AC signal to a head set. The headsets typically have around 32 Ohm resistance per side. If you connect the line to both sides, it will load and attenuate the AC level more.</p>
+            <p>In active call, having a series single 100uF and &gt;10V capacitor is enough to isolate the DC and send all frequencies into the head set, like below:</p>
+            <div id="attachment_1035" style="width: 377px" class="wp-caption aligncenter"><img class="photo__photo--1" src="https://www.electroboom.com/wp-content/uploads/2018/06/single-cap.jpg" alt="" width="367" height="166"><p class="wp-caption-text"><a href="#" class="footer__link">Single Capacitor Wire Tapping &uarr;</a></p></div>
+            <p>But you can’t just rely on a single capacitor to handle all protection and save your audio input, which in my case is my precious camera! The lines can have any polarity, the ringing voltage and the idle DC voltage are huge. And so I designed the circuit below:</p>
+            <div id="attachment_1036" style="width: 1010px" class="wp-caption aligncenter"><img class="photo__photo--2" src="https://www.electroboom.com/wp-content/uploads/2018/06/Wiretapping-Circuit.jpg" alt="" width="1000" height="374" srcset="https://www.electroboom.com/wp-content/uploads/2018/06/Wiretapping-Circuit.jpg 1000w, https://www.electroboom.com/wp-content/uploads/2018/06/Wiretapping-Circuit-300x112.jpg 300w, https://www.electroboom.com/wp-content/uploads/2018/06/Wiretapping-Circuit-768x287.jpg 768w, https://www.electroboom.com/wp-content/uploads/2018/06/Wiretapping-Circuit-500x187.jpg 500w" sizes="(max-width: 1000px) 100vw, 1000px"><p class="wp-caption-text"><a href="#" class="footer__link">Wire Tapping Circuit &uarr;</a></p></div>
+            <p>Let me explain how it works.<br></p>
+            <ul>
+            <li>D1 is the <a href="#" class="footer__link" id="fbr-a" onmouseover="playSound()">FULL BRIDGE RECTIFIER</a>! We need this to make sure no matter what the order of the wires are, we send the right side up DC voltage into the circuit. Puny single diode wouldn’t work here, because then the circuit would not work and will be off if the DC voltage is in reverse.</li>
+            <li>The rectifier is typically used to make a DC voltage, but here we don’t want to rectify, we want the AC signal of the audio to go through. And that’s where R1 comes into effect. The diode D1 only outputs current one way which would charge C1 up to the maximum of the AC + DC signal. And so for any voltage below these when AC level goes into falling cycle or DC level drops for some reason, the diode turns off and the AC signal is cut off from the circuit. R1 makes sure C1 is discharged as the AC signal goes down and so the entire AC cycle goes through.</li>
+            <li>But what is C1 for? It is of course to isolate the phone line’s DC voltage from the circuit and to only let the AC through.</li>
+            <li>Then the AC signal goes through the R2 / R3 resistor divider, which in my case I divided the signal by a factor of ~3. Because per my measurement, the AC signal was a maximum of 3V peak to peak, or 1.5V amplitude. Dividing it by 3 would give me a 0.5V maximum peak for the signal. This would ensure that the AC is not distorted by my next stage, D2 and D3 diodes.</li>
+            <li>D2 and D3 diodes are there to limit the AC peak level. For positive peaks above ~0.6V, D3 would conduct and clamp the voltage to around 0.6V to 0.7V, and for negative voltages, D2 would do the same. This way the AC amplitude wouldn’t rise above 0.7V peak, which would be safe for my camera input. And again this is why I divided the AC signal using R2 and R3 to have a maximum of 0.5V audio level, so that D2 and D3 won’t clamp and distort the audio. Basically D2 and D3 would clamp the ringing voltage, as well as any transients and ESD voltages coming in. Of course their clamping current is heavily limited through R2.</li>
+            <li>And last but not the list, C2 isolates the DC voltage coming from the camera from the circuit which has a 0V DC. My camera outputs around 2V DC when recording, which would easily be clamped to 0.7V by D3 and pretty much destroys the AC audio signal too. But with C2, no clamping happens. The DC coming from the camera is to power electret microphones, and sometimes is also used as an indication by some microphones attached to the camera so they can detect when the camera is recording and wake up.</li>
+            </ul>
+            <p>You see in my circuit below (before I added the C2 capacitor) I have moved the location of C1 to the bottom side, solely to make the circuit look more symmetrical. C1 is a series capacitor with the rest of the circuit anyway, and switching locations of series components will not affect the properties of the circuit.</p>
+            <p><img class="photo__photo--3" src="https://www.electroboom.com/wp-content/uploads/2018/06/Soldered-Circuit.jpg" alt="" width="488" height="258"></p>
+            <p>Now you might like to know what are the proper values for these components. I can tell you the values I used which I picked based on feeling and what I had available that worked well, which are:</p>
+            <ul>
+            <li>A full bridge rectifier chip with not much current capability. I don’t have its part number, it is under the hot glue now! But any generic bridge would work.</li>
+            <li>R1: 10kOhm</li>
+            <li>C1: 1uF 50V (mind the polarity, must withstand the 48V DC)</li>
+            <li>R2: 2.2kOhm</li>
+            <li>R3: 1.2kOhm</li>
+            <li>D2 and D3: Any generic all purpose rectifier diode, but I used 1N4001. Others like 1N400x (x=1 to 7) or 1N4148 or similar would work just fine.</li>
+            <li>C2: 10uF 16V (mind the polarity)</li>
+            </ul>
+            <p><strong>Design Tips:</strong></p>
+            <ul>
+            <li>To make sure you are passing low frequencies well enough, C1 x (R2 + R3) should be large enough as the circuit is a high pass filter. For example if the low frequency role-off is f = 100Hz, then f = 1/(2 x Pi x C1 x (R2 + R3)) would help you calculate. In my case R2 + R3 = ~3k. So C1 = 0.53uF and above would be fine. My value of 1uF seems pretty good here.</li>
+            <li>R1 should draw the same or more current than that C1 was charged with during positive peak of AC signal. More current is fine, because the voltage across R1 only drops to a point where D1 turns on which results in C1 voltage following the AC input. The excess current is provided through the diode from input rather than discharging C1. But a smaller R1 current would be trouble, because then C1 would continue charging up and turning D1 off, clipping the AC input like a real DC rectifier. I guess some white board explanation would be good at this point! But anyway in my circuit if AC signal is at its maximum of 1.5V peak, this voltage over (R2 +R3) = 3k will result in 0.5mA charging C1. So we need more that that current through R1 to ensure C1 discharges properly without creating DC offset. We already have a 7.5V DC on phone line, which plus the 1.5V positive peak of the AC results in 9V. This voltage through the D1 diodes drops back to ~ 7.5V DC. 7.5V divided by our R1 of 10k would be 0.75mA, over the 0.5mA we need to properly discharge C1. Hey, my feeling was pretty on point there!</li>
+            <li>Increasing C1 would help passing low frequencies better, but wouldn’t effect the charge/discharge current and so resistor values won’t need to adjust.</li>
+            <li>C2 doesn’t need to be much. A value equal to C1 or more is fine because of high resistance input of the camera audio jack. But of course I don’t have an accurate measure if how much that input resistance is. If known, then C2 should be calculated better. Otherwise keep C2 a bit higher. If you are happy with your audio quality, then it is fine.</li>
+            </ul>
+                        </div>
+            </div>
+        </div>
+    </body>
+</html>
